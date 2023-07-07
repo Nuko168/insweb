@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Website</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #sidebarToggle {
+            position: fixed;
+            top: 10px;
+            left: 45px;
+            border: 1px solid black; /* Remove the border */
+            transition: left 0.3s; /* Add this line */
+        }
+        #sidebarToggle img {
+            width: 20px;
+            height: auto;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: fixed;
+            top: 0;
+            left: -200px;
+            height: 100vh;
+            transition: left 0.3s;
+        }
+        .sidebar.show {
+            left: 0;
+        }
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .sidebar a.active {
+            background-color: #555; /* or any color you prefer */
+        }
+        .main-content {
+            padding: 20px;
+            margin-left: 25px; /* Adjusted to account for the 5px shift to the right */
+        }
+        .header {
+            background-color: #ddd;
+            padding: 20px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .header img {
+            max-width: 100%;
+        }
+        p {
+            margin-left: 5px; /* Shifted 5px to the right */
+        }
+    </style>
+</head>
+<body>
+    <button id="sidebarToggle"><img src="C:\Users\tomoy\Downloads\矢印アイコン　右6.png" alt="Toggle Sidebar"></button>
+    <div id="sidebar" class="sidebar">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="works.html">Works</a>
+        <a href="contact.html">Contact</a>
+        <button id="sidebarClose">Close Sidebar</button> <!-- Close button -->
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Welcome to Our Website!</h1>
+            <!--<img src="C:\Users\tomoy\Pictures\blender rendered\time third.png" alt="Header Image"> -->
+        </div>
+        <p>This is the main content area.</p>
+    </div>
+    <script>
+        var sidebarToggle = document.getElementById('sidebarToggle');
+        var sidebar = document.getElementById('sidebar');
+
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('show');
+            if (sidebar.classList.contains('show')) {
+                sidebarToggle.style.left = "245px"; // Adjust this value to position the toggle button correctly when the sidebar is open
+            } else {
+                sidebarToggle.style.left = "45px"; // Adjust this value to position the toggle button correctly when the sidebar is closed
+            }
+        });
+
+        document.getElementById('sidebarClose').addEventListener('click', function() {
+            sidebar.classList.remove('show');
+            sidebarToggle.style.left = "45px"; // Adjust this value to position the toggle button correctly when the sidebar is closed
+        });
+    </script>
+</body>
+</html>
